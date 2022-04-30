@@ -1,16 +1,13 @@
 import './App.css';
+import Curriculum from './pages/Curriculum';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        <p>
-          Start Currículo em React JS
-        </p>
-      </header>
+      <Curriculum />
     </div>
   );
 }
 
 export default App;
+
