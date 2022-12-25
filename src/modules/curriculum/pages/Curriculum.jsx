@@ -1,5 +1,5 @@
 // Libs
-import { Box, Card, CardMedia, Grid, Typography } from '@mui/material'
+import { Card, CardMedia, Grid, Typography } from '@mui/material'
 
 // Project
 import myImg from 'assets/images/me.jpg'
@@ -13,7 +13,9 @@ function Curriculum() {
     >
       <Grid
         item
-        xs={11}
+        xs={11.5}
+        md={11}
+        lg={10}
         pt={1}
       >
         <Card
@@ -22,17 +24,20 @@ function Curriculum() {
             borderRadius: '20px',
             minHeight: '150px'
           }}
-        >
-          <Box m={2}></Box>
-        </Card>
+        />
       </Grid>
       <Grid
         item
-        xs={11}
+        xs={12}
+        md={10}
+        lg={8}
       >
-        <Card sx={{ mt: -8, mx: 8, borderRadius: '20px' }}>
+        <Card
+          sx={{ mt: -8, mx: { xs: 2, md: 4, lg: 8 }, borderRadius: '20px' }}
+        >
           <Grid
             container
+            width="100%"
             rowSpacing={2}
             columnSpacing={3}
             p={2}
@@ -41,15 +46,37 @@ function Curriculum() {
               item
               xs={12}
             >
-              <CardMedia
-                sx={{ height: 150, width: 150, borderRadius: '20px' }}
-                image={myImg}
-                title="Eu"
-              />
+              <Grid
+                container
+                justifyContent="flex-start"
+              >
+                <Grid item>
+                  <CardMedia
+                    sx={{
+                      height: { xs: 100, md: 120, lg: 150 },
+                      width: { xs: 100, md: 120, lg: 150 },
+                      borderRadius: '20px'
+                    }}
+                    image={myImg}
+                    title="My picture"
+                  />
+                </Grid>
+                <Grid
+                  item
+                  pl={2}
+                  mt={{ xs: 0, md: 2, lg: 4 }}
+                >
+                  <Typography variant="h5">{data.name}</Typography>
+                  <Typography variant="body1">{data.course}</Typography>
+                  <Typography variant="body1">{data.current}</Typography>
+                </Grid>
+              </Grid>
             </Grid>
             <Grid
               item
-              xs={3}
+              xs={12}
+              md={12}
+              lg={5}
             >
               <Grid
                 container
@@ -62,10 +89,10 @@ function Curriculum() {
                 </Grid>
                 <Grid item>
                   <Typography variant="h6">{data.contact}</Typography>
-                  {data.contacts.map((item) => (
+                  {data.contacts.map((item, index) => (
                     <Typography
                       variant="body2"
-                      key={item}
+                      key={'contact' + index}
                     >
                       {item}
                     </Typography>
@@ -73,46 +100,100 @@ function Curriculum() {
                 </Grid>
                 <Grid item>
                   <Typography variant="h6">{data.skills}</Typography>
-                  {data.my_skills.map((item) => (
-                    <Typography
-                      variant="body2"
-                      key={item}
-                    >
-                      {item}
-                    </Typography>
-                  ))}
+                  <Grid container>
+                    {data.my_skills.map((item, index) => (
+                      <Grid item>
+                        <Card
+                          sx={{
+                            backgroundColor: '#3b47ee',
+                            borderRadius: '20px',
+                            mt: 1,
+                            ml: 1
+                          }}
+                        >
+                          <Typography
+                            variant="body2"
+                            key={'skills' + index}
+                            mx={1}
+                            color="white"
+                          >
+                            {item}
+                          </Typography>
+                        </Card>
+                      </Grid>
+                    ))}
+                  </Grid>
+                </Grid>
+                <Grid item>
+                  <Typography variant="h6">{data.other_skills}</Typography>
+                  <Grid container>
+                    {data.my_other_skills.map((item, index) => (
+                      <Grid item>
+                        <Card
+                          sx={{
+                            backgroundColor: '#3b47ee',
+                            borderRadius: '20px',
+                            mt: 1,
+                            ml: 1
+                          }}
+                        >
+                          <Typography
+                            variant="body2"
+                            key={'otherSkills' + index}
+                            mx={1}
+                            color="white"
+                          >
+                            {item}
+                          </Typography>
+                        </Card>
+                      </Grid>
+                    ))}
+                  </Grid>
+                </Grid>
+                <Grid item>
+                  <Typography variant="body2">{data.languages}</Typography>
                 </Grid>
               </Grid>
             </Grid>
             <Grid
               item
-              xs={9}
+              xs={12}
+              md={12}
+              lg={7}
             >
               <Grid item>
-                <Typography variant="h5">{data.name}</Typography>
-                <Typography variant="body2">{data.course}</Typography>
-              </Grid>
-              <Grid item>
-                <Typography variant="body2">
-                  {data.academic_education}
-                </Typography>
+                <Typography variant="h6">{data.academic_education}</Typography>
+                <Typography variant="body2">{data.university_date}</Typography>
                 <Typography variant="body2">{data.university}</Typography>
                 <Typography variant="body2">
                   {data.university_message}
                 </Typography>
-                <Typography variant="body2">data.{data.school}</Typography>
-                <Typography variant="body2">{data.school_essage}</Typography>
+                <br />
+                <Typography variant="body2">{data.school_date}</Typography>
+                <Typography variant="body2">{data.school}</Typography>
+                <Typography variant="body2">{data.school_message}</Typography>
+                <br />
               </Grid>
               <Grid item>
-                <Typography variant="body2">{data.work_sperience}</Typography>
+                <Typography variant="h6">{data.work_sperience}</Typography>
+                <Typography variant="body2">
+                  {data.cloud_matize_date}
+                </Typography>
+                <Typography variant="body2">{data.cloud_matize}</Typography>
+                <Typography variant="body2">
+                  {data.cloud_matize_message}
+                </Typography>
+                <br />
+                <Typography variant="body2">{data.bedu_tech_date}</Typography>
                 <Typography variant="body2">{data.bedu_tech}</Typography>
                 <Typography variant="body2">
                   {data.bedu_tech_message}
                 </Typography>
               </Grid>
-              <Grid item>
+              <br />
+              {/* <Grid item>
                 <Typography variant="body2">{data.projects}</Typography>
-              </Grid>
+              </Grid> */}
             </Grid>
           </Grid>
         </Card>
