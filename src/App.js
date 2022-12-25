@@ -1,13 +1,11 @@
-import './App.css';
-import Curriculum from './pages/Curriculum';
+import Curriculum from "modules/curriculum/pages/Curriculum"
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <Curriculum />
     </div>
-  );
+  )
 }
 
-export default App;
-
+export default App
